@@ -11,6 +11,41 @@ public class Disc extends Medium {
 		this.director = director;
 		this.fsk = fsk;
 	}
+	
+	private Disc() {
+		super("");
+		director = "";
+		barcode = "";
+		fsk = -1;
+	}
+	
+	/**
+	 * Returns a new disc with merged information of this one and the given one.
+	 * The given discs field values are preferred over this ones. Only if a field of the given discs is null or contain an escape value, this discs value is used instead.
+	 * @param newer The dominant book to merge with.
+	 * @return A new merged book. 
+	 */
+	public Disc merge(Disc newer) {
+		String director = getDirector();
+		String title = getTitle();
+		String barcode = getBarcode();
+		int fsk = getFsk();
+		
+		if(newer.getDirector() != null) {
+			director = newer.getDirector();
+		}
+		if(newer.getTitle() != null) {
+			title = newer.getTitle();
+		}
+		if(newer.getBarcode() != null) {
+			barcode = newer.getBarcode();
+		}
+		if(newer.getFsk() < 0) {
+			fsk = newer.getFsk();
+		}
+		
+		return new Disc(title, barcode, director, fsk);
+	}
 
 	public String getBarcode() {
 		return barcode;

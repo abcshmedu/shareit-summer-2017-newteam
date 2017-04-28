@@ -10,6 +10,36 @@ public class Book extends Medium{
 		this.author = author;
 		this.isbn = isbn;
 	}
+	
+	private Book() {
+		super("");
+		author = "";
+		isbn = "";
+	}
+	
+	/**
+	 * Returns a new book with merged information of this one and the given one.
+	 * The given books field values are preferred over this ones. Only if a field of the given book is null, this books value is used instead.
+	 * @param newer The dominant book to merge with.
+	 * @return A new merged book. 
+	 */
+	public Book merge(Book newer) {
+		String author = getAuthor();
+		String title = getTitle();
+		String isbn = getIsbn();
+		
+		if(newer.getAuthor() != null) {
+			author = newer.getAuthor();
+		}
+		if(newer.getTitle() != null) {
+			title = newer.getTitle();
+		}
+		if(newer.getIsbn() != null) {
+			isbn = newer.getIsbn();
+		}
+		
+		return new Book(title, author, isbn);
+	}
 
 	public String getAuthor() {
 		return author;

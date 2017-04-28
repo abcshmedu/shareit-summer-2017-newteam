@@ -3,7 +3,15 @@ package edu.hm.eporcio.shareIt.mediaAdministration.access;
 public class Medium {
 	private final String title;
 	
-	Medium(String title) {
+	public Medium merge(Medium newer) {
+		String title = getTitle();
+		if(newer.getTitle() != null) {
+			title = newer.getTitle();
+		}
+		return new Medium (title);
+	}
+	
+	public Medium(String title) {
 		this.title = title;
 	}
 	
