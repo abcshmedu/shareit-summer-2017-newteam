@@ -15,6 +15,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -36,7 +37,14 @@ public class MediaResource {
 		
 		try {
 			Book book = mapper.readValue(bookJson, Book.class);
-			return fail(SERVICE.addBook(book));
+			
+			MediaServiceResult result = SERVICE.addBook(book);
+			if(result == MediaServiceResult.Ok) {
+				return ResponseBuilder.status(200, "OK").build();
+			}
+			else {
+				return fail(result);
+			}
 			
 		} catch (IOException exeption) {
 			if (exeption.getClass() == JsonParseException.class) {
@@ -51,10 +59,20 @@ public class MediaResource {
 	
 	@GET
 	@Path("/books")
-	public String getBooks() {
-		ResponseBuilder response = ResponseBuilder.code(200).status("Ok");
-		response.addList(Arrays.asList(SERVICE.getBooks()));
-		return response.build();
+	public String getBooks() throws JsonProcessingException {
+			return ResponseBuilder.status(200, "OK").addList(Arrays.asList(SERVICE.getBooks())).build();
+	}
+	
+	@GET
+	@Path("/books/{isbn}")
+	public String getBooks(@PathParam("isbn")String isbn) throws JsonProcessingException {
+		Medium book = SERVICE.getBook(isbn);
+		if(book == null) {
+			return fail(MediaServiceResult.IsbnNotFound);
+		}
+		else {
+			return ResponseBuilder.status(200, "OK").addObject(book).build();
+		}
 	}
 	
 	@PUT
@@ -69,7 +87,13 @@ public class MediaResource {
 				fail(MediaServiceResult.IsbnModification);
 			}
 			
-			return fail(SERVICE.updateBook(book));
+			MediaServiceResult result = SERVICE.updateBook(book);
+			if(result == MediaServiceResult.Ok) {
+				return ResponseBuilder.status(200, "OK").build();
+			}
+			else {
+				return fail(result);
+			}
 			
 		} catch (IOException exeption) {
 			if (exeption.getClass() == JsonParseException.class) {
@@ -83,8 +107,7 @@ public class MediaResource {
 	}
 	
 	private String fail(MediaServiceResult status) {
-		return ResponseBuilder.code(status.getCode())
-				.status(status.getStatus())
+		return ResponseBuilder.status(status.getCode(), status.getHttpStatus())
 				.body("code", String.valueOf(status.getCode()))
 				.body("detail", status.getStatus())
 				.build();

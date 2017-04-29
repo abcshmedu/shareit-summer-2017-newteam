@@ -15,14 +15,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class ResponseBuilder {
 	
-	/** A list of all response elements in order. Will be concatenated to a String. */
+	/** A list of all response elements in order. Will be concatenated to a String. Allows more dynamic modification of the response. */
 	private List<String> elements = new ArrayList<>();
-	/** True if a status has already been set. */
-	private boolean statusExists = false;
 	/** True if the response already has a body */
 	private boolean bodyExists = false;
 	
-	
+	/** Forces user to use factory method "status". */
 	private ResponseBuilder() {}
 	
 	/**
@@ -30,27 +28,12 @@ public class ResponseBuilder {
 	 * @param code The status code of the HTTP response.
 	 * @return A new ResponseBuilder with the given status code.
 	 */
-	public static ResponseBuilder code(int code) {
+	public static ResponseBuilder status(int code, String status) {
 		ResponseBuilder toReturn = new ResponseBuilder();
 		toReturn.elements.add(Integer.toString(code));
+		toReturn.elements.add(1, " " + status);
 		toReturn.elements.add("\r\n");
 		return toReturn;
-	}
-	
-	/**
-	 * Adds a status message or overwrites the old one.
-	 * @param message The new status message.
-	 * @return This ResponseBuilder with new or altered status message.
-	 */
-	public ResponseBuilder status(String message) {
-		if(statusExists) {
-			elements.set(1, " " + message);	//overwrite old status
-		}
-		else {
-			elements.add(1, " " + message);
-			statusExists = true;
-		}
-		return this;
 	}
 	
 	/**
@@ -62,6 +45,7 @@ public class ResponseBuilder {
 	public ResponseBuilder body(String key, String value) {
 		if(!bodyExists) {
 			elements.add("\r\n");	//double newline marks start of body
+			bodyExists = true;
 		}
 		elements.add("\"" + key + "\": " + value);
 		elements.add(",\r\n");
@@ -80,6 +64,7 @@ public class ResponseBuilder {
 		
 		if(!bodyExists) {
 			elements.add("\r\n");	//double newline marks start of body
+			bodyExists = true;
 		}
 		
 			elements.add("[\r\n");
@@ -87,8 +72,28 @@ public class ResponseBuilder {
 				elements.add(mapper.writeValueAsString(listElement));
 				elements.add(",\r\n");
 			}
-			elements.add(elements.size() - 1, "]");
+			elements.set(elements.size() - 1, "\r\n]");
 			elements.add(",\r\n");
+		return this;
+	}
+	
+	/**
+	 * Adds an object to the response body.
+	 * @param toAdd The object to add.
+	 * @return This ResponseBuilder with the object added.
+	 * @throws JsonProcessingException When a Jackson mapping problem occurs.
+	 */
+	public ResponseBuilder addObject(Object toAdd) throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		
+		if(!bodyExists) {
+			elements.add("\r\n");	//double newline marks start of body
+			bodyExists = true;
+		}
+		
+		elements.add(mapper.writeValueAsString(toAdd));
+		elements.add(",\r\n");
+				
 		return this;
 	}
 	
@@ -98,7 +103,10 @@ public class ResponseBuilder {
 	 */
 	public String build() {
 		if(bodyExists) {
-			elements.add("\r\n");	//double newline marks end of response
+			elements.set(elements.size() - 1, "\r\n\r\n");	//double newline marks end of response
+		}
+		else {
+			elements.add("\r\n");
 		}
 		
 		final StringBuilder response = new StringBuilder();
