@@ -28,13 +28,13 @@ public class Book extends Medium{
 		String title = getTitle();
 		String isbn = getIsbn();
 		
-		if(newer.getAuthor() != null) {
+		if(newer.getAuthor() != null && !newer.getAuthor().equals("")) {
 			author = newer.getAuthor();
 		}
-		if(newer.getTitle() != null) {
+		if(newer.getTitle() != null && !newer.getTitle().equals("")) {
 			title = newer.getTitle();
 		}
-		if(newer.getIsbn() != null) {
+		if(newer.getIsbn() != null && !newer.getIsbn().equals("")) {
 			isbn = newer.getIsbn();
 		}
 		

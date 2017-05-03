@@ -31,16 +31,16 @@ public class Disc extends Medium {
 		String barcode = getBarcode();
 		int fsk = getFsk();
 		
-		if(newer.getDirector() != null) {
+		if(newer.getDirector() != null && !newer.getDirector().equals("")) {
 			director = newer.getDirector();
 		}
-		if(newer.getTitle() != null) {
+		if(newer.getTitle() != null && !newer.getTitle().equals("")) {
 			title = newer.getTitle();
 		}
-		if(newer.getBarcode() != null) {
+		if(newer.getBarcode() != null && !newer.getBarcode().equals("")) {
 			barcode = newer.getBarcode();
 		}
-		if(newer.getFsk() < 0) {
+		if(newer.getFsk() > 0) {
 			fsk = newer.getFsk();
 		}
 		

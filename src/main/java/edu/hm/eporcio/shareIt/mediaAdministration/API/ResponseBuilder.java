@@ -60,6 +60,10 @@ public class ResponseBuilder {
 	 * @throws JsonProcessingException When a Jackson mapping problem occurs.
 	 */
 	public ResponseBuilder addList(Collection<Object> toAdd) throws JsonProcessingException {
+		if (toAdd == null) {
+			return this;
+		}
+		
 		ObjectMapper mapper = new ObjectMapper();
 		
 		if(!bodyExists) {
@@ -72,7 +76,13 @@ public class ResponseBuilder {
 				elements.add(mapper.writeValueAsString(listElement));
 				elements.add(",\r\n");
 			}
-			elements.set(elements.size() - 1, "\r\n]");
+			
+			if (toAdd.size() != 0) {
+				elements.set(elements.size() - 1, "\r\n]");
+			}
+			else {
+				elements.add("]");
+			}
 			elements.add(",\r\n");
 		return this;
 	}
@@ -84,6 +94,10 @@ public class ResponseBuilder {
 	 * @throws JsonProcessingException When a Jackson mapping problem occurs.
 	 */
 	public ResponseBuilder addObject(Object toAdd) throws JsonProcessingException {
+		if (toAdd == null) {
+			return this;
+		}
+		
 		ObjectMapper mapper = new ObjectMapper();
 		
 		if(!bodyExists) {

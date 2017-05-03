@@ -43,7 +43,7 @@ public enum MediaServiceResult {
 		
 		httpStatus = new HashMap<>();
 		httpStatus.put(200, "OK");
-		httpStatus.put(400, "Internal Server Error");
+		httpStatus.put(400, "Bad Request");
 		httpStatus.put(404, "Not Found");
 		httpStatus.put(500, "Internal Server Error");
 	}

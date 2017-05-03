@@ -23,16 +23,30 @@ public interface MediaService {
 	public MediaServiceResult addDisc(Disc toAdd);
 	
 	/**
+	 * Returns a book by its ISBN.
+	 * @param isbn ISBN of the book to get.
+	 * @return The book with the specified ISBN, null if the book is not known.
+	 */
+	public Book getBook(String isbn);
+	
+	/**
+	 * Returns a disc by its barcode.
+	 * @param barcode Barcode of the disc to get.
+	 * @return The disc with the specified barcode, null if the disc is not known.
+	 */
+	public Disc getDisc(String barcode);
+	
+	/**
 	 * Lists all currently known Books.
 	 * @return An array of all currently known Books.
 	 */
-	public Medium[] getBooks();
+	public Book[] getBooks();
 	
 	/**
 	 * Lists all currently known Discs.
 	 * @return An array of all currently known Discs.
 	 */
-	public Medium[] getDiscs();
+	public Disc[] getDiscs();
 	
 	/**
 	 * Updates the fields of a book that is already known to the system.
