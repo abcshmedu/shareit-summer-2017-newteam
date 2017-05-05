@@ -16,13 +16,13 @@ import org.junit.runners.Parameterized.Parameters;
  * @version May 4, 2017
  */
 @RunWith(Parameterized.class)
-public class MediumTestMerge {
+public class MediumMergeTest {
 
     private final Medium old;
     private final Medium newer;
     private final Medium expected;
     
-    public MediumTestMerge(Medium old, Medium newer, Medium expected) {
+    public MediumMergeTest(Medium old, Medium newer, Medium expected) {
         this.old = old;
         this.newer = newer;
         this.expected = expected;

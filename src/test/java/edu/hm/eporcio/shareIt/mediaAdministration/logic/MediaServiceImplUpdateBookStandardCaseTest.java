@@ -18,7 +18,7 @@ import edu.hm.eporcio.shareIt.mediaAdministration.access.Book;
  * @version May 4, 2017
  */
 @RunWith(Parameterized.class)
-public class MediaServiceImplTestUpdateBookStandardCase {
+public class MediaServiceImplUpdateBookStandardCaseTest {
     
     private final Book toUpdate;
     private final Book updated;
@@ -26,7 +26,7 @@ public class MediaServiceImplTestUpdateBookStandardCase {
     private final MediaServiceResult expectedResult;
     
     
-    public MediaServiceImplTestUpdateBookStandardCase(Book toUpdate, Book updated, Book merged, MediaServiceResult expectedResult) {
+    public MediaServiceImplUpdateBookStandardCaseTest(Book toUpdate, Book updated, Book merged, MediaServiceResult expectedResult) {
         this.toUpdate = toUpdate;
         this.updated = updated;
         this.expectedMerged = merged;

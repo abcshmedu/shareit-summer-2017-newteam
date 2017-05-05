@@ -19,12 +19,12 @@ import edu.hm.eporcio.shareIt.mediaAdministration.access.Medium;
  * @version May 4, 2017
  */
 @RunWith(Parameterized.class)
-public class MediaServiceImplTestAddMediumStandardCase {
+public class MediaServiceImplAddMediumStandardCaseTest {
     
     private final Medium medium;
     private final MediaServiceResult expected;
     
-    public MediaServiceImplTestAddMediumStandardCase(Medium medium, MediaServiceResult expected) {
+    public MediaServiceImplAddMediumStandardCaseTest(Medium medium, MediaServiceResult expected) {
         this.medium = medium;
         this.expected = expected;
     }

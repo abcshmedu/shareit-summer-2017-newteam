@@ -18,7 +18,7 @@ import edu.hm.eporcio.shareIt.mediaAdministration.access.Disc;
  * @version May 4, 2017
  */
 @RunWith(Parameterized.class)
-public class MediaServiceImplTestUpdateDiscStandardCase {
+public class MediaServiceImplUpdateDiscStandardCaseTest {
     
     private final Disc toUpdate;
     private final Disc updated;
@@ -26,7 +26,7 @@ public class MediaServiceImplTestUpdateDiscStandardCase {
     private final MediaServiceResult expectedResult;
     
     
-    public MediaServiceImplTestUpdateDiscStandardCase(Disc toUpdate, Disc updated, Disc merged, MediaServiceResult expectedResult) {
+    public MediaServiceImplUpdateDiscStandardCaseTest(Disc toUpdate, Disc updated, Disc merged, MediaServiceResult expectedResult) {
         this.toUpdate = toUpdate;
         this.updated = updated;
         this.expectedMerged = merged;

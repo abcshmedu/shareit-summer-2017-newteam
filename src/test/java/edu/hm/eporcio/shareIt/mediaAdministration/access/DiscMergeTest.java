@@ -16,13 +16,13 @@ import org.junit.runners.Parameterized.Parameters;
  * @version May 4, 2017
  */
 @RunWith(Parameterized.class)
-public class DiscTestMerge {
+public class DiscMergeTest {
 
     private final Disc old;
     private final Disc newer;
     private final Disc expected;
     
-    public DiscTestMerge(Disc old, Disc newer, Disc expected) {
+    public DiscMergeTest(Disc old, Disc newer, Disc expected) {
         this.old = old;
         this.newer = newer;
         this.expected = expected;

@@ -13,7 +13,7 @@ import edu.hm.eporcio.shareIt.mediaAdministration.access.Disc;
  * @author Elias Porcio, elias.porcio@hm.edu
  * @version May 4, 2017
  */
-public class MediaServiceImplTestNonStandardCases {
+public class MediaServiceImplNonStandardCasesTest {
     
     private MediaService service;
     private final Book validBook = new Book ("valid", "valid", "000-0-00000-000-0");

@@ -16,7 +16,7 @@ import org.junit.runners.Parameterized.Parameters;
  * @version May 4, 2017
  */
 @RunWith(Parameterized.class)
-public class DiscTestEquals {
+public class DiscEqualsTest {
 
     private final Disc disc;
     private final Object toCompare;
@@ -24,7 +24,7 @@ public class DiscTestEquals {
     
 
     
-    public DiscTestEquals(Disc disc, Object toCompare, boolean expected) {
+    public DiscEqualsTest(Disc disc, Object toCompare, boolean expected) {
         super();
         this.disc = disc;
         this.toCompare = toCompare;

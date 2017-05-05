@@ -16,7 +16,7 @@ import org.junit.runners.Parameterized.Parameters;
  * @version May 4, 2017
  */
 @RunWith(Parameterized.class)
-public class BookTestEquals {
+public class BookEqualsTest {
 
     private final Book book;
     private final Object toCompare;
@@ -24,7 +24,7 @@ public class BookTestEquals {
     
 
     
-    public BookTestEquals(Book book, Object toCompare, boolean expected) {
+    public BookEqualsTest(Book book, Object toCompare, boolean expected) {
         super();
         this.book = book;
         this.toCompare = toCompare;

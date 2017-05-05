@@ -6,15 +6,15 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import edu.hm.eporcio.shareIt.mediaAdministration.API.MediaResourceTest;
 import edu.hm.eporcio.shareIt.mediaAdministration.API.ResponseBuilderTest;
-import edu.hm.eporcio.shareIt.mediaAdministration.access.BookTestEquals;
-import edu.hm.eporcio.shareIt.mediaAdministration.access.BookTestMerge;
-import edu.hm.eporcio.shareIt.mediaAdministration.access.DiscTestEquals;
-import edu.hm.eporcio.shareIt.mediaAdministration.access.DiscTestMerge;
-import edu.hm.eporcio.shareIt.mediaAdministration.access.MediumTestMerge;
-import edu.hm.eporcio.shareIt.mediaAdministration.logic.MediaServiceImplTestAddMediumStandardCase;
-import edu.hm.eporcio.shareIt.mediaAdministration.logic.MediaServiceImplTestNonStandardCases;
-import edu.hm.eporcio.shareIt.mediaAdministration.logic.MediaServiceImplTestUpdateBookStandardCase;
-import edu.hm.eporcio.shareIt.mediaAdministration.logic.MediaServiceImplTestUpdateDiscStandardCase;
+import edu.hm.eporcio.shareIt.mediaAdministration.access.BookEqualsTest;
+import edu.hm.eporcio.shareIt.mediaAdministration.access.BookMergeTest;
+import edu.hm.eporcio.shareIt.mediaAdministration.access.DiscEqualsTest;
+import edu.hm.eporcio.shareIt.mediaAdministration.access.DiscMergeTest;
+import edu.hm.eporcio.shareIt.mediaAdministration.access.MediumMergeTest;
+import edu.hm.eporcio.shareIt.mediaAdministration.logic.MediaServiceImplAddMediumStandardCaseTest;
+import edu.hm.eporcio.shareIt.mediaAdministration.logic.MediaServiceImplNonStandardCasesTest;
+import edu.hm.eporcio.shareIt.mediaAdministration.logic.MediaServiceImplUpdateBookStandardCaseTest;
+import edu.hm.eporcio.shareIt.mediaAdministration.logic.MediaServiceImplUpdateDiscStandardCaseTest;
 
 /**
  * Runs all tests.
@@ -23,16 +23,16 @@ import edu.hm.eporcio.shareIt.mediaAdministration.logic.MediaServiceImplTestUpda
  */
 @RunWith(Suite.class)
 @SuiteClasses({
-    BookTestEquals.class,
-    DiscTestEquals.class,
-    BookTestMerge.class,
-    DiscTestMerge.class,
-    MediumTestMerge.class,
+    BookEqualsTest.class,
+    DiscEqualsTest.class,
+    BookMergeTest.class,
+    DiscMergeTest.class,
+    MediumMergeTest.class,
     
-    MediaServiceImplTestUpdateBookStandardCase.class,
-    MediaServiceImplTestUpdateDiscStandardCase.class,
-    MediaServiceImplTestAddMediumStandardCase.class,
-    MediaServiceImplTestNonStandardCases.class,
+    MediaServiceImplUpdateBookStandardCaseTest.class,
+    MediaServiceImplUpdateDiscStandardCaseTest.class,
+    MediaServiceImplAddMediumStandardCaseTest.class,
+    MediaServiceImplNonStandardCasesTest.class,
     
     ResponseBuilderTest.class,
     MediaResourceTest.class

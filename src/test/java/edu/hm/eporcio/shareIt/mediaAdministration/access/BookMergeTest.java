@@ -16,13 +16,13 @@ import org.junit.runners.Parameterized.Parameters;
  * @version May 4, 2017
  */
 @RunWith(Parameterized.class)
-public class BookTestMerge {
+public class BookMergeTest {
 
     private final Book old;
     private final Book newer;
     private final Book expected;
     
-    public BookTestMerge(Book old, Book newer, Book expected) {
+    public BookMergeTest(Book old, Book newer, Book expected) {
         this.old = old;
         this.newer = newer;
         this.expected = expected;
