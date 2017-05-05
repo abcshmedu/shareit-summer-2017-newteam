@@ -107,7 +107,7 @@ public class MediaResource {
     @Path("/books")
     public String getBooks() throws JsonProcessingException {
             return ResponseBuilder
-                    .status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getStatus())
+                    .status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getHttpStatus())
                     .addList(Arrays.asList(SERVICE.getBooks()))
                     .build();
     }
@@ -121,7 +121,7 @@ public class MediaResource {
     @Path("/discs")
     public String getDiscs() throws JsonProcessingException {
             return ResponseBuilder
-                    .status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getStatus())
+                    .status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getHttpStatus())
                     .addList(Arrays.asList(SERVICE.getDiscs()))
                     .build();
     }
@@ -141,7 +141,7 @@ public class MediaResource {
         }
         else {
             return ResponseBuilder
-                    .status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getStatus())
+                    .status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getHttpStatus())
                     .addObject(book)
                     .build();
         }
@@ -162,7 +162,7 @@ public class MediaResource {
         }
         else {
             return ResponseBuilder
-                    .status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getStatus())
+                    .status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getHttpStatus())
                     .addObject(disc)
                     .build();
         }
@@ -189,7 +189,7 @@ public class MediaResource {
             
             MediaServiceResult result = SERVICE.updateBook(book);
             if (result == MediaServiceResult.Ok) {
-                return ResponseBuilder.status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getStatus()).build();
+                return ResponseBuilder.status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getHttpStatus()).build();
             }
             else {
                 return fail(result);
@@ -227,7 +227,7 @@ public class MediaResource {
             
             MediaServiceResult result = SERVICE.updateDisc(disc);
             if (result == MediaServiceResult.Ok) {
-                return ResponseBuilder.status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getStatus()).build();
+                return ResponseBuilder.status(MediaServiceResult.Ok.getCode(), MediaServiceResult.Ok.getHttpStatus()).build();
             }
             else {
                 return fail(result);
