@@ -8,24 +8,24 @@ Heroku-link: https://ancient-hamlet-96691.herokuapp.com/
 Media objects must be passed as JSON objects in the request body.
 
 #### Example of a book object
-´´´
+```
 {
 	"title": "Programmieren mit Java",
 	"author": "Reinhard Schiedermeier",
  	"isbn": "978-3-8689-4031-2"
 }
-´´´
+```
 No field may be null or empty, the ISBN must be a valid ISBN-13.
 
 #### Example of a disc object
-´´´
+```
 {
 	"title": "Programmieren mit Java, Hörspiel",
 	"barcode": "9783868940312",
 	"director": "Reinhard Schiedermeier",
  	"fsk":	0
 }
-´´´
+```
 No field may be null or empty, the barcode must be a valid EAN, fsk must be a positive integer.
 
 #### POST /shareit/media/books
@@ -63,20 +63,20 @@ At least one field must be changed.
 ### Copies (not yet implemented):
 
 #### Example of a book copy object
-´´´
+```
 {
 	"isbn": "978-3-8689-4031-2",
 	"username": "myUsername"
 }
-´´´
+```
 
 #### Example of a disc copy object
-´´´
+```
 {
 	"barcode": "9783868940312",
 	"username": "myUsername"
 }
-´´´
+```
 
 #### POST /shareit/media/books/copys
 Add a new copy of a book.
